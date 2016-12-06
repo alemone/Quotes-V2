@@ -10,7 +10,6 @@ use Slim\Http\Response as Response;
 
 
 $app->get('/home/{page:[0-9]+}', function (Request $request, Response $response, array $args) {
-    /** @var \Spot\Locator $spot */
     $page = $args["page"];
     $quotesMapper = new QuotesMapper($this->db);
     $from = -9;
@@ -21,7 +20,7 @@ $app->get('/home/{page:[0-9]+}', function (Request $request, Response $response,
     $quotes = $quotesMapper->getQuotesLimit($from, $count);
     $rows = $quotesMapper->getQuotesCount();
     $numberOfPages = ceil($rows / 9.0);
-    if ($page > $numberOfPages || $page < 1) {
+    if ($numberOfPages != 0 && ($page > $numberOfPages || $page < 1)) {
         return $response->withStatus(404);
     } else {
         return $this->view->render($response, 'home.html.twig', [
