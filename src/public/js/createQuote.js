@@ -24,7 +24,7 @@ $(function () {
         quote.date = date;
         quote.author = author;
         $.when(postQuote(quote)).always(function (response) {
-            window.location.replace("http://quotes.localhost");
+            window.location.replace("http://quotes.ammonix.ch");
         });
     });
 });
