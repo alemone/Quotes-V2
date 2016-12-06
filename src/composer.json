@@ -1,0 +1,14 @@
+{
+    "require": {
+        "slim/slim": "^3.6",
+        "slim/twig-view": "^2.1",
+        "monolog/monolog": "^1.22",
+        "akrabat/rka-ip-address-middleware": "^0.5.0",
+        "tuupola/slim-basic-auth": "^2.2",
+        "tuupola/slim-jwt-auth": "^2.3",
+        "dflydev/fig-cookies": "^1.0",
+        "vlucas/spot2": "~2.0",
+        "illuminate/database": "~5.1",
+        "silex/silex": "^2.0"
+    }
+}

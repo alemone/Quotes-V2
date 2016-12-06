@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    <div class="row">
+        {% for quote in quotes %}
+            <div class="col s12 m6 l4">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="{{ quote.author.thumbnail }}">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p>{{ quote.content }}</p>
+                        </div>
+                        <div class="card-action">
+                            - <i>{{ quote.author.name }} {{ quote.date | date("d.m.Y") }}</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="fixed-action-btn horizontal" id="menuButton">
+        <a class="btn-floating btn-large red">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul>
+            <li>
+                <a class="btn-floating red" href="{{ path_for('createAuthors') }}">
+                    <i class="material-icons">perm_identity</i>
+                </a>
+            </li>
+            <li>
+                <a class="btn-floating green" href="{{ path_for('createQuotes') }}">
+                    <i class="material-icons">format_quote</i>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+{% endblock %}

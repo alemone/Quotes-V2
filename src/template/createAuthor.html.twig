@@ -1,0 +1,45 @@
+{% extends "layout.html.twig" %}
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ base_url() }}/css/createAuthor.css"/>
+{% endblock %}
+{% block title %}Create Authors{% endblock %}
+{% block content %}
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <img class="responsive-img col s12 l4 circle responsive-img" id="authorThumbnail"
+                     src="{{ base_url() }}/api/files/images/defAuthor.png">
+            </div>
+            <div class="row">
+                <div class="file-field input-field col s12 l8 offset-l4">
+                    <div class="btn">
+                        <span>File</span>
+                        <input id="authorThumbnailInput" type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="authorName" type="text" class="validate">
+                    <label for="authorName">Name</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light left"
+                    type="button" name="action" id="createAuthorButton"> Submit
+                <i class="material-icons right">send</i>
+            </button>
+            <button class="btn waves-effect waves-light right "
+                    type="button" name="action"><a class="white-text" href="{{ base_url() }}"> Back</a>
+                <i class="material-icons right">skip_previous</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ base_url() }}/js/createAuthor.js"></script>
+{% endblock %}

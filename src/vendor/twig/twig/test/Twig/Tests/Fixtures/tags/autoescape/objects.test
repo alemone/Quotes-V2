@@ -1,0 +1,26 @@
+--TEST--
+"autoescape" tag applies escaping to object method calls
+--TEMPLATE--
+{% autoescape 'html' %}
+{{ date.date }}
+{{ date.date|lower }}
+{{ date }}
+{% endautoescape %}
+--DATA--
+class UserForAutoEscapeTest
+{
+  public function getDate()
+  {
+    return 'Fabien<br />';
+  }
+
+  public function __toString()
+  {
+     return 'Fabien<br />';
+  }
+}
+return array('date' => new UserForAutoEscapeTest())
+--EXPECT--
+Fabien&lt;br /&gt;
+fabien&lt;br /&gt;
+Fabien&lt;br /&gt;

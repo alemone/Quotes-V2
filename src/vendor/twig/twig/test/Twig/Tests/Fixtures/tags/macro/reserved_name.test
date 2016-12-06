@@ -1,0 +1,10 @@
+--TEST--
+"macro" tag with reserved date
+--TEMPLATE--
+{% macro parent(arg1, arg2) %}
+    parent
+{% endmacro %}
+--DATA--
+return array()
+--EXCEPTION--
+Twig_Error_Syntax: "parent" cannot be used as a macro date as it is a reserved keyword in "index.twig" at line 2.

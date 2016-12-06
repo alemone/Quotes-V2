@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <link rel="stylesheet" href="{{ base_url() }}/css/style.css"/>
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {#<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>#}
+        <link type="text/css" rel="stylesheet" href="{{ base_url() }}/css/materialize.min.css"
+              media="screen,projection"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>{% block title %}{% endblock %} - Quotes</title>
+    {% endblock %}
+</head>
+<body class="deep-purple lighten-5">
+<header>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="{{ base_url() }}" class="brand-logo center">QUOTES</a>
+        </div>
+    </nav>
+</header>
+<main>
+    <div id="content" class="container">
+        {% block sidebar %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+</main>
+{% block footer %}
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Quotes</h5>
+                    <p class="grey-text text-lighten-4">
+                        This is Quotes, a somewhat collection of funny statements.
+                    </p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                    <a class="btn-large waves-effect waves-light" target="_blank"
+                       href="https://github.com/Ammonix/quotes.git">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2016 Ammonix, all rights reserved
+                <a class="grey-text text-lighten-4 right"
+                   href="https://opensource.org/licenses/MIT" target="_blank">
+                    MIT License
+                </a>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+{% block js %}
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/main.js"></script>
+{% endblock %}
+</body>
+</html>
