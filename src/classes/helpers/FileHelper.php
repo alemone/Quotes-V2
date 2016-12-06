@@ -12,7 +12,7 @@ class FileHelper
     {
         $file = parse_url($fileUri);
         if (isset($file["host"])) {
-            if ($file["host"] == SERVER_HOST) {
+            if ($file["host"] == EnvironmentHelper::getServerHost()) {
                 chdir(dirname(__FILE__));
                 chdir("../..");
 
@@ -27,7 +27,7 @@ class FileHelper
 
     public static function setUserThumbnail($files)
     {
-        $pathToFile = SERVER_PROTOCOL . "://" . SERVER_HOST . "/api/files/images/";
+        $pathToFile = SERVER_PROTOCOL . "://" . EnvironmentHelper::getServerHost() . "/api/files/images/";
         if (!empty($files['thumbnail'])) {
             /** @var Slim\Http\UploadedFile $thumbnail */
             $thumbnail = $files['thumbnail'];
