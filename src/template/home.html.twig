@@ -1,25 +1,57 @@
 {% extends "layout.html.twig" %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <div class="row">
-        {% for quote in quotes %}
-            <div class="col s12 m6 l4">
-                <div class="card horizontal">
-                    <div class="card-image">
-                        <img src="{{ quote.author.thumbnail }}">
-                    </div>
-                    <div class="card-stacked">
-                        <div class="card-content">
-                            <p>{{ quote.content }}</p>
-                        </div>
-                        <div class="card-action">
-                            - <i>{{ quote.author.name }} {{ quote.date | date("d.m.Y") }}</i>
-                        </div>
-                    </div>
-                </div>
+    {% if numberOfPages > 0 %}
+        <ul class="pagination">
+            {% if currentPage <= 1 %}
+                <li class="disabled">
+                    <a href="#">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="waves-effect">
+                    <a href="{{ path_for('home',{'page' : currentPage - 1}) }}">
+                        <i class="material-icons">chevron_left</i>
+                    </a>
+                </li>
+            {% endif %}
+
+            {% for numberOfPage in 1..numberOfPages %}
+                <li class="{% if currentPage == numberOfPage %} active {% else %} waves-effect {% endif %}"><a
+                            href="{{ path_for('home',{'page' : numberOfPage}) }}">{{ numberOfPage }}</a></li>
+            {% endfor %}
+
+            {% if currentPage >= numberOfPages %}
+                <li class="disabled">
+                    <a href="#">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="waves-effect">
+                    <a href="{{ path_for('home',{'page' : currentPage + 1}) }}">
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+
+        {{ include('quotes.html.twig') }}
+
+    {% else %}
+        <div class="card large">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{ base_url() }}/api/files/images/emptyDatabase.jpg">
             </div>
-        {% endfor %}
-    </div>
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
+                    There are no Quotes in our Databse, please add some!
+                </span>
+            </div>
+        </div>
+    {% endif %}
+
 
     <div class="fixed-action-btn horizontal" id="menuButton">
         <a class="btn-floating btn-large red">

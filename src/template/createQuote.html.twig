@@ -19,7 +19,8 @@
                     <select class="icons" id="quoteAuthor">
                         <option value="0" disabled selected>Author</option>
                         {% for author in authors %}
-                            <option value="{{ author.id }}" data-icon="{{ author.thumbnail }}" class="left circle">{{ author.name }}</option>
+                            <option value="{{ author.id }}" data-icon="{{ author.thumbnail }}"
+                                    class="left circle">{{ author.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -32,8 +33,8 @@
                     type="button" name="action" id="createQuoteButton"> Submit
                 <i class="material-icons right">send</i>
             </button>
-            <button class="btn waves-effect waves-light right "
-                    type="button" name="action"> <a class="white-text" href="{{ base_url() }}"> Back</a>
+            <button class="btn waves-effect waves-light right backButton"
+                    type="button" name="action">Back
                 <i class="material-icons right">skip_previous</i>
             </button>
         </form>

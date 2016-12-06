@@ -9,5 +9,5 @@ use Slim\Http\Request as Request;
 use Slim\Http\Response as Response;
 
 $app->any('/', function (Request $request, Response $response) {
-    return $response->withStatus(302)->withHeader('Location', 'home');
+    return $response->withStatus(302)->withHeader('Location', 'home/1');
 });
