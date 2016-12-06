@@ -10,7 +10,7 @@ abstract class EnvironmentHelper
 {
     private static $_localhostUrl = "quotes.localhost";
     private static $_testtUrl = "bmat.dev.ammonix.ch";
-    private static $_prodtUrl = "api.brautmodelivia.ch";
+    private static $_prodtUrl = "quotes.ammonix.ch";
 
 
     /**
@@ -34,8 +34,27 @@ abstract class EnvironmentHelper
         }
     }
 
+    public static function getServerHost(): string
+    {
+        switch (self::getEnvironmentName()) {
+
+            case Environment::LOCALHOST:
+                return 'quotes.localhost';
+                break;
+            case Environment::TEST:
+                return 'UNDEFINED';
+                break;
+            case Environment::PROD:
+                return 'quotes.ammonix.ch';
+                break;
+            default:
+                throw new Exception("Environment undefined!" . $_SERVER["HTTP_HOST"]);
+                break;
+        }
+    }
+
     //Requires db file
-    public static function getDBvalues() :array
+    public static function getDBvalues(): array
     {
         switch (self::getEnvironmentName()) {
 
