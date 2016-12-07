@@ -23,8 +23,8 @@ $(function () {
         quote.content = content;
         quote.date = date;
         quote.author = author;
-        $.when(postQuote(quote)).always(function (response) {
-            window.location.replace("http://quotes.ammonix.ch");
+        $.when(postQuote(quote)).done(function (response) {
+            window.location.replace("/");
         });
     });
 });

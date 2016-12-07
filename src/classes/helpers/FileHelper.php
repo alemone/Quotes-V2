@@ -42,4 +42,12 @@ class FileHelper
         }
         return $pathToFile;
     }
+
+    public static function fileExists($path)
+    {
+        chdir(dirname(__FILE__));
+        chdir("../..");
+        $entirePath = getcwd() . $path;
+        return file_exists($entirePath);
+    }
 }

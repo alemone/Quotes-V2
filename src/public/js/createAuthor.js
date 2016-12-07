@@ -14,7 +14,7 @@ $(function () {
         data.append("thumbnail", author.file);
         data.append("name", author.name);
         $.when(postAuthor(data)).done(function (response) {
-            window.location.replace("http://quotes.ammonix.ch");
+            window.location.replace("/");
         });
     });
     $("#authorThumbnailInput").change(function () {

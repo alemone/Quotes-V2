@@ -6,11 +6,20 @@ body {
 
 main {
     flex: 1 0 auto;
-    position: relative;
+}
+
+.quoteCards {
+    overflow: hidden;
 }
 
 #menuButton {
-    position: absolute;
     right: 5%;
-    bottom: 5%;
+    bottom: 20%;
+}
+
+@media (max-width: 600px) {
+    #menuButton {
+        right: 5%;
+        bottom: 10%;
+    }
 }

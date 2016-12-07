@@ -1,13 +1,17 @@
 <div class="row">
     {% for quote in quotes %}
         <div class="col s12 m6 l4">
-            <div class="card horizontal">
+            <div class="card horizontal quoteCards">
                 <div class="card-image">
-                    <img src="{{ quote.author.thumbnail }}">
+                    {% if file_exists(quote.author.thumbnail) %}
+                        <img src="{{ quote.author.thumbnail }}">
+                    {% else %}
+                        <img src="http://quotes.localhost/api/files/images/defAuthor.png">
+                    {% endif %}
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p>{{ quote.content }}</p>
+                        <p>{{ quote.content | wordwrap(15) | truncate(100) }}</p>
                     </div>
                     <div class="card-action">
                         - <i>{{ quote.author.name }} {{ quote.date | date("d.m.Y") }}</i>
