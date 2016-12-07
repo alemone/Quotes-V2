@@ -8,18 +8,40 @@ main {
     flex: 1 0 auto;
 }
 
-.quoteCards {
+.quoteCards .card-image img {
+    max-height: 10vw;
+}
+
+.quoteCards .card-content {
+    height: 10vw;
+    overflow: hidden;
+}
+
+.quoteCards .card-action {
+    height: 5vw;
     overflow: hidden;
 }
 
 #menuButton {
     right: 5%;
-    bottom: 20%;
+    bottom: 5%;
+}
+
+@media (max-width: 992px) {
 }
 
 @media (max-width: 600px) {
-    #menuButton {
-        right: 5%;
-        bottom: 10%;
+    .quoteCards .card-image img {
+        max-height: 20vw;
+    }
+
+    .quoteCards .card-content {
+        height: 20vw;
+        overflow: hidden;
+    }
+
+    .quoteCards .card-action {
+        height: 15vw;
+        overflow: hidden;
     }
 }

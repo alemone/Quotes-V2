@@ -6,7 +6,7 @@
  * Date: 07.12.2016
  * Time: 22:42
  */
-class TwigFileExtention extends \Twig_Extension
+class FileExtention extends \Twig_Extension
 {
     /**
      * Return the functions registered as twig extensions
@@ -26,7 +26,11 @@ class TwigFileExtention extends \Twig_Extension
         $filename = basename($url);
         $expression = '/^\/api(\/.*' . $filename . ')$/';
         preg_match($expression, $path, $results);
-        $pathToFileOnServer = $results[1];
-        return FileHelper::fileExists($pathToFileOnServer);
+        if (!empty($results)) {
+            $pathToFileOnServer = $results[1];
+            return FileHelper::fileExists($pathToFileOnServer);
+        } else {
+            return false;
+        }
     }
 }

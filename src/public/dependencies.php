@@ -19,8 +19,9 @@ $container['view'] = function ($container) {
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $basePath = SERVER_PROTOCOL . "://" . EnvironmentHelper::getServerHost();
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+    $view->addExtension(new FileExtention());
+    $view->addExtension(new CurrentVersionExtention());
     $view->addExtension(new Twig_Extension_Debug());
-    $view->addExtension(new TwigFileExtention());
     $view->addExtension(new Twig_Extensions_Extension_Text());
     return $view;
 };

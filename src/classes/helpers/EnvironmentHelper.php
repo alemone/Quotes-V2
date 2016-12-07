@@ -103,6 +103,10 @@ abstract class EnvironmentHelper
     {
         return constant("SECRET");
     }
+    public static function getCurrentVersion(): string
+    {
+        return constant("CURRENTVERSION");
+    }
 }
 
 abstract class  Environment

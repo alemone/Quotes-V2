@@ -14,3 +14,4 @@ define("PRODHOST", "ammonixc.mysql.db.internal");
 define("PRODUSER", "ammonixc_quotes");
 define("PRODPASS", "YJ7EZhWk");
 define("PRODDBNAME", "ammonixc_quotes");
+define("CURRENTVERSION", "0.1.2.08122016");

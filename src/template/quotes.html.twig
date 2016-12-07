@@ -11,10 +11,11 @@
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p>{{ quote.content | wordwrap(15) | truncate(100) }}</p>
+                        <p class="hyphens">{{ quote.content  |  truncate(120) | wordwrap(20)}}</p>
                     </div>
                     <div class="card-action">
-                        - <i>{{ quote.author.name }} {{ quote.date | date("d.m.Y") }}</i>
+                        -
+                        <i>{{ quote.author.name  | wordwrap(20) | truncate(10) }} {{ quote.date | date("d.m.Y") }}</i>
                     </div>
                 </div>
             </div>
