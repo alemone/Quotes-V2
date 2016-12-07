@@ -24,9 +24,9 @@ class TwigFileExtention extends \Twig_Extension
     {
         $path = parse_url($url)["path"];
         $filename = basename($url);
-        $expression = '/^\/api\/(.*' . $filename . ')$/';
+        $expression = '/^\/api(\/.*' . $filename . ')$/';
         preg_match($expression, $path, $results);
         $pathToFileOnServer = $results[1];
-        FileHelper::fileExists($pathToFileOnServer);
+        return FileHelper::fileExists($pathToFileOnServer);
     }
 }
