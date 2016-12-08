@@ -4,7 +4,7 @@
             <div class="card horizontal quoteCards">
                 <div class="card-image">
                     {% if  file_exists(quote.author.thumbnail) %}
-                        {% set thumbnail  = author.thumbnail %}
+                        {% set thumbnail  = quote.author.thumbnail %}
                     {% else %}
                         {% set thumbnail ="http://quotes.localhost/api/files/images/defAuthor.png" %}
                     {% endif %}
