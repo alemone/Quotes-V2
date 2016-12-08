@@ -3,15 +3,14 @@
         <div class="col s12 m6 l4">
             <div class="card horizontal quoteCards">
                 <div class="card-image">
-                    {% if file_exists(quote.author.thumbnail) %}
-                        <img src="{{ quote.author.thumbnail }}">
-                    {% else %}
-                        <img src="http://quotes.localhost/api/files/images/defAuthor.png">
+                    {% if not file_exists(quote.author.thumbnail) %}
+                        {% set thumbnail ="http://quotes.localhost/api/files/images/defAuthor.png" %}
                     {% endif %}
+                    <img src="{{ thumbnail }}">
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p class="hyphens">{{ quote.content  |  truncate(120) | wordwrap(20)}}</p>
+                        <p class="hyphens">{{ quote.content  |  truncate(120) | wordwrap(20) }}</p>
                     </div>
                     <div class="card-action">
                         -
