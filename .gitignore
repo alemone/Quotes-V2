@@ -1,6 +1,5 @@
 .idea/*
 src/vendor/*
 src/logs/*
-src/files/*
 src/composer.lock
 src/envValues.php
