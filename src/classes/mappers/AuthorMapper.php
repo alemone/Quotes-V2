@@ -10,7 +10,7 @@ class AuthorMapper extends Mapper
 {
     public function getAuthorById($id)
     {
-        $sql = "SELECT a.id, a.name, a.thumbnail
+        $sql = "SELECT a.id, a.name, a.thumbnail, a.user_token
                 FROM author a
                 WHERE a.id = :id";
         $stmt = $this->db->prepare($sql);
@@ -19,6 +19,7 @@ class AuthorMapper extends Mapper
         ]);
         $data = $stmt->fetch();
         if ($result && !is_bool($data)) {
+            $data["user"] = UserHelper::getUserByToken($data["user_token"]);
             return new AuthorEntity($data);
         } else {
             throw new NotFoundException("No author found");
@@ -46,13 +47,14 @@ class AuthorMapper extends Mapper
     public function saveAuthor(AuthorEntity $author)
     {
         $sql = "INSERT INTO author
-            (thumbnail, name) VALUES
-            (:thumbnail,:name)";
+            (thumbnail, name, user_token) VALUES
+            (:thumbnail,:name, :user_token)";
 
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute([
             "thumbnail" => $author->getThumbnail(),
-            "name" => $author->getName()
+            "name" => $author->getName(),
+            "user_token" => $author->getUser()->getUserToken()
         ]);
         if (!$result) {
             throw new Exception("could not save record");

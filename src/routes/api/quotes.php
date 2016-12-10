@@ -11,6 +11,7 @@ use Slim\Http\Response as Response;
 $app->group('/api', function () {
     $this->post('/quotes', function (Request $request, Response $response) {
         $data = $request->getParams();
+        $data["user"] = $this->user;
         $data["author"] = new AuthorEntity($data["author"]);
         $quote = new QuotesEntity($data);
         $quoteMapper = new QuotesMapper($this->db);

@@ -11,12 +11,14 @@ class AuthorEntity implements JsonSerializable
     private $id;
     private $thumbnail;
     private $name;
+    private $user;
 
     public function __construct(array $data)
     {
         $this->id = isset($data['id']) ? $data['id'] : null;
         $this->thumbnail = isset($data['thumbnail']) ? $data['thumbnail'] : null;
         $this->name = isset($data['name']) ? $data['name'] : null;
+        $this->user = isset($data['user']) ? $data['user'] : null;
     }
 
     /**
@@ -41,6 +43,14 @@ class AuthorEntity implements JsonSerializable
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return UserEntity
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

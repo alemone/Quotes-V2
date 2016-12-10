@@ -12,6 +12,7 @@ $app->group('/api', function () {
     $this->post('/authors', function (Request $request, Response $response) {
         $data = $request->getParams();
         $files = $request->getUploadedFiles();
+        $data["user"] = $this->user;
         $data["thumbnail"] = EnvironmentHelper::getDefaultAuthorPB();
         if (!empty($files['thumbnail'])) {
             $data["thumbnail"] = FileHelper::setUserThumbnail($files);

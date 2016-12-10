@@ -16,9 +16,6 @@ $app->group('/create', function () {
         ]);
     })->setName('createQuotes');
     $this->get('/authors', function (Request $request, Response $response) {
-        $authorMapper = new AuthorMapper($this->db);
-        return $this->view->render($response, 'createAuthor.html.twig', [
-            "authors" => $authorMapper->getAuthors()
-        ]);
+        return $this->view->render($response, 'createAuthor.html.twig');
     })->setName('createAuthors');
 });

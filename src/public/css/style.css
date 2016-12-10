@@ -8,6 +8,17 @@ main {
     flex: 1 0 auto;
 }
 
+#gsignin{
+    all: initial;
+}
+#particles-js {
+    position: fixed;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
 .quoteCards .card-image img {
     max-height: 10vw;
 }

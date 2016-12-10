@@ -16,13 +16,36 @@ $config['db']['dbname'] = EnvironmentHelper::getDBvalues()["dbname"];
 
 $app = new \Slim\App(["settings" => $config]);
 
-#region setupContainer
 
 require_once 'dependencies.php';
 
+$app->add(new \Slim\Middleware\JwtAuthentication([
+    "logger" => $container["logger"],
+    "relaxed" => ["localhost", "quotes.localhost"],
+    "secret" => EnvironmentHelper::getSecret(),
+    "rules" => [
+        new \Slim\Middleware\JwtAuthentication\RequestPathRule([
+            "path" => "/",
+            "passthrough" => ["/home", "/public", "/api/login", "/api/files", "/makecoffee"]
+        ]),
+        new \Slim\Middleware\JwtAuthentication\RequestMethodRule([
+            "passthrough" => ["OPTIONS"]
+        ])
+    ],
 
-#endregion
+    "callback" => function (Request $request, Response $response, $args) use ($container) {
+        $decoded = $args["decoded"];
+        $user = new UserEntity(json_decode($decoded->user_information, true));
+        $container["user"] = $user;
+    },
+    "error" => function (Request $request, Response $response, $args) use ($container) {
 
+        $data["status"] = "error";
+        $data["message"] = $args["message"];
+        $container->logger->addInfo(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
+        return $response->withHeader('Location', '/home');
+    }
+]));
 
 $routeFiles = (array)glob('../routes/*/*.php');
 foreach ($routeFiles as $routeFile) {

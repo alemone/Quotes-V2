@@ -3,19 +3,28 @@
 <head>
     {% block head %}
         <link rel="stylesheet" href="{{ base_url() }}/css/style.css"/>
-        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {#<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>#}
         <link type="text/css" rel="stylesheet" href="{{ base_url() }}/css/materialize.min.css"
               media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id"
+              content="679571242818-ptfoirlrprgruhra8mto5m6sjj85hd8t.apps.googleusercontent.com">
         <title>{% block title %}{% endblock %} - Quotes</title>
     {% endblock %}
 </head>
 <body class="deep-purple lighten-5">
+<div id="particles-js"></div>
 <header>
     <nav>
         <div class="nav-wrapper">
             <a href="{{ base_url() }}" class="brand-logo center">QUOTES</a>
+            <div id="gsignin" class="g-signin2" data-onsuccess="onSignIn"></div>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <a  id="gsignout" hidden href="#" onclick="signOut();">Sign out</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </header>
@@ -59,9 +68,13 @@
             $.extend($.mobile, {autoInitializePage: false})
         });
     </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>
-    <script type="text/javascript" src="{{ base_url() }}/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/frameworks/materialize.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/frameworks/particles.min.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/app.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script type="text/javascript" src="{{ base_url() }}/js/main.js"></script>
+    <script type="text/javascript" src="{{ base_url() }}/js/login.js"></script>
 {% endblock %}
 </body>
 </html>

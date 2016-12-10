@@ -2,22 +2,27 @@
     {% for quote in quotes %}
         <div class="col s12 m6 l4">
             <div class="card horizontal quoteCards">
-                <div class="card-image">
+                <div class="card-image waves-effect waves-block waves-light">
                     {% if  file_exists(quote.author.thumbnail) %}
                         {% set thumbnail  = quote.author.thumbnail %}
                     {% else %}
                         {% set thumbnail ="http://quotes.localhost/api/files/images/defAuthor.png" %}
                     {% endif %}
-                    <img src="{{ thumbnail }}">
+                    <img class="activator" src="{{ thumbnail }}">
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p class="hyphens">{{ quote.content  |  truncate(120) | wordwrap(20) }}</p>
+                        <p>{{ quote.content  |  truncate(120) | wordwrap(20) }}</p>
                     </div>
                     <div class="card-action">
-                        -
-                        <i>{{ quote.author.name  | wordwrap(20) | truncate(10) }} {{ quote.date | date("d.m.Y") }}</i>
+                        <i>- {{ quote.author.name  | wordwrap(20) | truncate(10) }} {{ quote.date | date("d.m.Y") }}</i>
                     </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">Created by {{ quote.user.name }}
+                        <i class="material-icons right">close</i>
+                    </span>
+                   <img src="{{ quote.user.picture }}">
                 </div>
             </div>
         </div>
