@@ -41,6 +41,7 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
             $user = $userMapper->getUserBySub($sub);
             $container["user"] = $user;
         } else {
+            $container->logger->addDebug("Sub: $sub");
             return $response->withHeader('Location', '/home');
         }
     },

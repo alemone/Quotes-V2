@@ -33,7 +33,7 @@ $app->group('/api', function () {
             ->withMaxAge(2000)
             ->withSecure(false)
             ->withHttpOnly(true)
-            ->withDomain('quotes.localhost')
+            ->withDomain(EnvironmentHelper::getServerHost())
             ->withPath('/')
         );
         return $response->withStatus(200);
