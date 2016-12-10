@@ -13,14 +13,18 @@ use Dflydev\FigCookies\SetCookie;
 
 $app->group('/api', function () {
     $this->post('/login', function (Request $request, Response $response) {
+        $userMapper = new UserMapper($this->db);
         $token = $request->getParams();
         $id = $token["id"];
         $json = file_get_contents("https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=$id");
-        $arr = json_decode($json, true);
-        $arr["user"] = $id;
-        $json = json_encode($arr);
+        $data = json_decode($json, true);
+        $data["user_token"] = $id;
+        $user = new UserEntity($data);
+        if (!$userMapper->DBcontainsUserBySub($user->getSub())) {
+            $userMapper->saveUser($user);
+        }
         $payload = [
-            "user_information" => $json
+            "user" => $userMapper->getUserBySub($user->getSub())
         ];
         $secret = EnvironmentHelper::getSecret();
         $token = JWT::encode($payload, $secret, "HS256");

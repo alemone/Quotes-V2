@@ -10,7 +10,9 @@ class AuthorMapper extends Mapper
 {
     public function getAuthorById($id)
     {
-        $sql = "SELECT a.id, a.name, a.thumbnail, a.user_token
+
+        $userMapper = new UserMapper($this->db);
+        $sql = "SELECT a.id, a.name, a.thumbnail, a.user_sub
                 FROM author a
                 WHERE a.id = :id";
         $stmt = $this->db->prepare($sql);
@@ -19,7 +21,7 @@ class AuthorMapper extends Mapper
         ]);
         $data = $stmt->fetch();
         if ($result && !is_bool($data)) {
-            $data["user"] = UserHelper::getUserByToken($data["user_token"]);
+            $data["user"] = $userMapper->getUserBySub($data["user_sub"]);
             return new AuthorEntity($data);
         } else {
             throw new NotFoundException("No author found");
@@ -47,14 +49,14 @@ class AuthorMapper extends Mapper
     public function saveAuthor(AuthorEntity $author)
     {
         $sql = "INSERT INTO author
-            (thumbnail, name, user_token) VALUES
-            (:thumbnail,:name, :user_token)";
+            (thumbnail, name, user_sub) VALUES
+            (:thumbnail,:name, :user_sub)";
 
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute([
             "thumbnail" => $author->getThumbnail(),
             "name" => $author->getName(),
-            "user_token" => $author->getUser()->getUserToken()
+            "user_sub" => $author->getUser()->getSub()
         ]);
         if (!$result) {
             throw new Exception("could not save record");

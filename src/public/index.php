@@ -35,8 +35,14 @@ $app->add(new \Slim\Middleware\JwtAuthentication([
 
     "callback" => function (Request $request, Response $response, $args) use ($container) {
         $decoded = $args["decoded"];
-        $user = new UserEntity(json_decode($decoded->user_information, true));
-        $container["user"] = $user;
+        $userMapper = new UserMapper($container->db);
+        $sub = $decoded->user->sub;
+        if ($userMapper->DBcontainsUserBySub($sub)) {
+            $user = $userMapper->getUserBySub($sub);
+            $container["user"] = $user;
+        } else {
+            return $response->withHeader('Location', '/home');
+        }
     },
     "error" => function (Request $request, Response $response, $args) use ($container) {
 
