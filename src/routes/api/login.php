@@ -40,6 +40,7 @@ $app->group('/api', function () {
 
     });
     $this->delete('/login', function (Request $request, Response $response) {
+        var_dump("del");
         $response = FigResponseCookies::expire($response, 'token');
         return $response->withStatus(200);
 

@@ -20,7 +20,7 @@ $app->group('/api/files', function () {
         }
 
         $response->write($image);
-        return $response->withHeader('Content-Type', 'image/*');
+        return $response->withHeader('Content-Type', FILEINFO_MIME_TYPE);
     });
     $this->get('/pdf/{data:.+\..+}', function (Request $request, Response $response, array $args) {
         $data = $args['data'];

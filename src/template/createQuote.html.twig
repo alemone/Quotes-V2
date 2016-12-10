@@ -19,13 +19,8 @@
                     <select class="icons" id="quoteAuthor">
                         <option value="0" disabled selected>Author</option>
                         {% for author in authors %}
-                            {% if file_exists( author.thumbnail ) %}
-                                {% set thumbnail  = author.thumbnail %}
-                            {% else %}
-                                {% set thumbnail  = "http://quotes.localhost/api/files/images/defAuthor.png" %}
-                            {% endif %}
-                            <option value="{{ author.id }}" data-icon="{{ thumbnail }}"
-                                    class="left circle">{{ author.name | truncate(23) }}</option>
+                            <option value="{{ author.id }}" data-icon="{{ author.thumbnail }}"
+                                    class="left circle">{{ author.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
