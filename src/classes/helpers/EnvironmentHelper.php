@@ -38,13 +38,13 @@ abstract class EnvironmentHelper
         switch (self::getEnvironmentName()) {
 
             case Environment::LOCALHOST:
-                return SERVER_PROTOCOL . "://" . self::getServerHost() . "/files/imgs/defUser.png";
+                return SERVER_PROTOCOL . "://" . self::getServerHost() . "/api/files/imgs/defUser.png";
                 break;
             case Environment::TEST:
                 return 'UNDEFINED';
                 break;
             case Environment::PROD:
-                return SERVER_PROTOCOL . "://" . self::getServerHost() . "/files/imgs/defUser.png";
+                return SERVER_PROTOCOL . "://" . self::getServerHost() . "/api/files/imgs/defUser.png";
                 break;
             default:
                 throw new Exception("Environment undefined!" . $_SERVER["HTTP_HOST"]);
