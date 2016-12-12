@@ -4,19 +4,27 @@ body {
     flex-direction: column;
 }
 
+header{
+	z-index: 1;
+}
+
 main {
     flex: 1 0 auto;
 }
 
-#gsignin{
+footer{
+	z-index: 1;
+}
+
+#gsignin {
     all: initial;
 }
+
 #particles-js {
     position: fixed;
     margin: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
 }
 
 .quoteCards .card-image img {
@@ -25,12 +33,22 @@ main {
 
 .quoteCards .card-content {
     height: 10vw;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow: -moz-scrollbars-vertical;
+}
+
+.quoteCards .card-content p {
+    word-break: break-all;
 }
 
 .quoteCards .card-action {
     height: 5vw;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow: -moz-scrollbars-vertical;
+}
+
+.quoteCards .card-action i {
+    word-break: break-all;
 }
 
 #menuButton {
