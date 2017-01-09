@@ -2,3 +2,6 @@
 #content {
     margin-top: 10%;
 }
+#quoteAuthor option option{
+    word-break: break-all;
+}

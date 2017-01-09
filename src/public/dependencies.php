@@ -11,7 +11,7 @@ use \Slim\Http\Response as Response;
 $container = $app->getContainer();
 $container['view'] = function ($container) {
     $view = new \Slim\Views\Twig('../template', [
-        'cache' => false,//'cache',
+        'cache' => '../template/cache', //false,
         'autoreload' => true,
         'debug' => true
     ]);

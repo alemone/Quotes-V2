@@ -17,7 +17,7 @@
                     <span class="card-title grey-text text-darken-4">Created by {{ quote.user.name }}
                         <i class="material-icons right">close</i>
                     </span>
-                   <img src="{{ quote.user.picture }}">
+                   <a href="https://fancy.ammonix.ch/{{ quote.content }} - {{ quote.author.name}} {{ quote.date | date("d.m.Y") }}"><img src="{{ quote.user.picture }}"></a>
                 </div>
             </div>
         </div>

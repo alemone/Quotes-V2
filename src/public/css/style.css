@@ -8,9 +8,10 @@ main {
     flex: 1 0 auto;
 }
 
-#gsignin{
+#gsignin {
     all: initial;
 }
+
 #particles-js {
     position: fixed;
     margin: 0;
@@ -25,12 +26,22 @@ main {
 
 .quoteCards .card-content {
     height: 10vw;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow: -moz-scrollbars-vertical;
+}
+
+.quoteCards .card-content p {
+    word-break: break-all;
 }
 
 .quoteCards .card-action {
     height: 5vw;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow: -moz-scrollbars-vertical;
+}
+
+.quoteCards .card-action i {
+    word-break: break-all;
 }
 
 #menuButton {

@@ -38,6 +38,8 @@ class FileHelper
                     $thumbnail->moveTo("../files/images/$uploadFileName");
                     $pathToFile .= $uploadFileName;
                 }
+            }else{
+                $pathToFile .= "/defAuthor.png";
             }
         }
         return $pathToFile;
