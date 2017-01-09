@@ -8,10 +8,9 @@ main {
     flex: 1 0 auto;
 }
 
-#gsignin {
+#gsignin{
     all: initial;
 }
-
 #particles-js {
     position: fixed;
     margin: 0;
