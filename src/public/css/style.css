@@ -33,6 +33,7 @@ main {
     word-break: break-all;
 }
 
+
 .quoteCards .card-action {
     height: 5vw;
     overflow-y: auto;
