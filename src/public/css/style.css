@@ -58,7 +58,7 @@ main {
     }
 
     .quoteCards .card-content {
-        height: 20vw;
+        height: inherit;
         overflow: hidden;
     }
 
