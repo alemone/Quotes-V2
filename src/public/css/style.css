@@ -8,9 +8,10 @@ main {
     flex: 1 0 auto;
 }
 
-#gsignin{
+#gsignin {
     all: initial;
 }
+
 #particles-js {
     position: fixed;
     margin: 0;
@@ -32,7 +33,6 @@ main {
 .quoteCards .card-content p {
     word-break: break-all;
 }
-
 
 .quoteCards .card-action {
     height: 5vw;
@@ -63,7 +63,7 @@ main {
     }
 
     .quoteCards .card-action {
-        height: 15vw;
+        height: inherit;
         overflow: hidden;
     }
 }
