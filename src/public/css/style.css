@@ -7,7 +7,9 @@ body {
 main {
     flex: 1 0 auto;
 }
-
+footer, header{
+    z-index: 1;
+}
 #gsignin {
     all: initial;
 }
@@ -17,7 +19,6 @@ main {
     margin: 0;
     height: 100%;
     width: 100%;
-    z-index: -1;
 }
 
 .quoteCards .card-image img {
