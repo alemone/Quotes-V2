@@ -32,7 +32,7 @@ footer, header{
 }
 
 .quoteCards .card-content p {
-    word-break: break-all;
+    word-break: break-word;
 }
 
 .quoteCards .card-action {
