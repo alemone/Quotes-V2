@@ -6,7 +6,8 @@ var quote = {
     id: "",
     content: "",
     date: "",
-    author: ""
+    author: "",
+    rating: ""
 };
 var author = {
     id: "",
@@ -23,6 +24,7 @@ $(function () {
         quote.content = content;
         quote.date = date;
         quote.author = author;
+        quote.rating = 1;
         $.when(postQuote(quote)).done(function (response) {
             window.location.replace("/");
         });

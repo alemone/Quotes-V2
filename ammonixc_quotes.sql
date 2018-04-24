@@ -51,15 +51,16 @@ CREATE TABLE `quotes` (
   `content` text NOT NULL,
   `date` date NOT NULL,
   `author_id` int(11) NOT NULL,
-  `user_sub` varchar(255) NOT NULL
+  `user_sub` varchar(255) NOT NULL,
+  `rating` int(4) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `quotes`
 --
 
-INSERT INTO `quotes` (`id`, `content`, `date`, `author_id`, `user_sub`) VALUES
-  (3, 'Faggots', '2016-12-10', 23, '111257305889975354330');
+INSERT INTO `quotes` (`id`, `content`, `date`, `author_id`, `user_sub`, `rating`) VALUES
+  (3, 'Faggots', '2016-12-10', 23, '111257305889975354330', '23');
 
 -- --------------------------------------------------------
 

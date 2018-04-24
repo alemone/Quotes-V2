@@ -13,6 +13,7 @@ class QuotesEntity implements JsonSerializable
     private $date;
     private $author;
     private $user;
+    private $rating;
 
     public function __construct(array $data)
     {
@@ -21,6 +22,7 @@ class QuotesEntity implements JsonSerializable
         $this->date = isset($data['date']) ? $data['date'] : null;
         $this->author = isset($data['author']) ? $data['author'] : null;
         $this->user = isset($data['user']) ? $data['user'] : null;
+        $this->user = isset($data['rating']) ? $data['rating'] : null;
     }
 
     /**
@@ -61,6 +63,14 @@ class QuotesEntity implements JsonSerializable
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * @return UserEntity
+     */
+    public function getRating()
+    {
+        return $this->rating;
     }
 
     /**
